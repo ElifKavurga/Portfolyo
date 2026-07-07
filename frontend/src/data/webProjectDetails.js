@@ -1,0 +1,101 @@
+export const webProjectDetails = {
+  jakartamora: {
+    title: 'Jakartamora',
+    subtitle: 'Eğitim ve Dokümantasyon Platformu',
+    description:
+      'Jakarta EE ekosistemi üzerine inşa edilen eğitim ve dokümantasyon platformu. Yazılım mühendisliği kavramlarını yapılandırılmış içerikler, teknik dokümantasyon ve öğrenme modülleriyle sunmayı hedefleyen kurumsal standartlarda bir web uygulamasıdır.',
+    tags: ['Jakarta EE', 'Eğitim', 'Dokümantasyon'],
+    icon: 'school',
+  },
+  devlog: {
+    title: 'DevLog',
+    subtitle: 'Kapsamlı İçerik Yönetim Sistemi (CMS) ve Blog Platformu',
+    description:
+      'Jakarta EE (JSF, JPA), PostgreSQL ve Bootstrap teknolojilerini kullanarak geliştirdiğim; dinamik içerik üretimine ve detaylı yönetim panellerine sahip kurumsal standartlarda bir blog platformudur. Uygulama mimarisini Entity, Facade ve Managed Bean katmanlarıyla modüler olarak tasarladım; sistem içerisinde Rol Tabanlı Erişim Kontrolü (Admin, Yazar) ve içerik moderasyon süreçlerini entegre ettim.',
+    tags: ['Jakarta EE', 'JSF', 'JPA', 'PostgreSQL', 'Bootstrap'],
+    icon: 'menu_book',
+  },
+  'nova-connect': {
+    title: 'Nova-Connect',
+    subtitle: 'Modern Web Bağlantı Platformu',
+    description:
+      'Kullanıcı etkileşimini ve veri akışını merkeze alan modern web platformu. Ölçeklenebilir backend servisleri ve duyarlı arayüz bileşenleriyle geliştirilmiş, bağlantı odaklı dijital deneyimler sunar.',
+    tags: ['Spring Boot', 'React', 'RESTful API'],
+    icon: 'hub',
+  },
+  'hogsmade-cafe': {
+    title: 'Hogsmade Cafe',
+    subtitle: 'Cafe Yönetim ve Sipariş Web Uygulaması',
+    description:
+      'Kafe işletmeleri için sipariş, menü ve operasyon süreçlerini dijitalleştiren web tabanlı yönetim uygulaması. Kullanıcı dostu arayüz ve modüler backend yapısıyla günlük operasyonları kolaylaştırır.',
+    tags: ['Web', 'Full-Stack', 'PostgreSQL'],
+    icon: 'local_cafe',
+  },
+  footbase: {
+    title: 'FootBase',
+    subtitle: 'Kapsamlı Futbol Veri ve Yönetim Platformu',
+    description:
+      'Java Spring Boot (Backend), React.js (Frontend) ve PostgreSQL kullanarak geliştirdiğim; JWT kimlik doğrulamalı ve çoklu rol (Admin, Editör, Kullanıcı) destekli full-stack spor yönetim platformudur. Sistemin sürdürülebilir olması için kodlamada Factory, Observer, Strategy ve Builder gibi ileri seviye Tasarım Desenleri uygulayarak maç, oyuncu istatistikleri ve dinamik puanlama süreçlerini modelledim.',
+    tags: ['Spring Boot', 'React', 'PostgreSQL', 'JWT', 'Design Patterns'],
+    icon: 'sports_soccer',
+  },
+  dersyoldasi: {
+    title: 'DersYoldaşı',
+    subtitle: 'Yazılım Mühendisliğinde Gelişmeler Eğitim Platformu',
+    description:
+      'Yazılım mühendisliği ders içeriklerini dijital ortamda yapılandırarak sunan eğitim platformu. Öğrencilerin ders materyallerine erişimini kolaylaştıran, modüler ve sürdürülebilir bir web mimarisi üzerine kurulmuştur.',
+    tags: ['Web', 'Eğitim', 'Spring Boot'],
+    icon: 'groups',
+  },
+}
+
+export const webOrbPositions = [
+  { className: 'absolute -left-2 md:-left-16 top-[8%]', delay: 0 },
+  { className: 'absolute -right-2 md:-right-20 top-[20%]', delay: 0.5 },
+  { className: 'absolute -left-6 md:-left-28 bottom-[18%]', delay: 1 },
+  { className: 'absolute -right-4 md:-right-24 bottom-[8%]', delay: 1.5 },
+  { className: 'absolute left-1/2 -translate-x-1/2 -top-10 md:-top-14', delay: 0.75 },
+  { className: 'absolute left-1/2 -translate-x-1/2 -bottom-12 md:-bottom-16', delay: 1.25 },
+]
+
+export function getWebProjectKey(project) {
+  const source = `${project.githubUrl} ${project.title}`.toLowerCase()
+
+  if (source.includes('jakartamora')) return 'jakartamora'
+  if (source.includes('devlog')) return 'devlog'
+  if (source.includes('nova-connect') || source.includes('novaconnect')) return 'nova-connect'
+  if (source.includes('hogsmade')) return 'hogsmade-cafe'
+  if (source.includes('footbase')) return 'footbase'
+  if (source.includes('dersyold') || source.includes('yazilim-muhendisliginde')) return 'dersyoldasi'
+
+  return source.replace(/\s+/g, '-')
+}
+
+export function isWebProject(project) {
+  return project.category === 'Web' || project.category === 'WEB'
+}
+
+export function mergeWebProjectData(apiProject) {
+  const key = getWebProjectKey(apiProject)
+  const pdf = webProjectDetails[key] ?? {}
+
+  return {
+    key,
+    title: pdf.title ?? apiProject.title,
+    subtitle: pdf.subtitle ?? 'Web Projesi',
+    description: pdf.description || apiProject.description || 'Proje açıklaması mevcut değil.',
+    tags: pdf.tags ?? ['Web'],
+    icon: pdf.icon ?? 'language',
+    githubUrl: apiProject.githubUrl,
+    imageUrl: apiProject.imageUrl,
+  }
+}
+
+export function getWebFallbackProjects() {
+  return Object.entries(webProjectDetails).map(([key, detail]) => ({
+    key,
+    ...detail,
+    githubUrl: '#',
+    imageUrl: null,
+  }))
+}
