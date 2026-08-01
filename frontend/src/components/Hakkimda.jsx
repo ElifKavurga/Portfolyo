@@ -3,150 +3,139 @@ import { scrollToContact } from '../utils/scrollToContact'
 const education = {
   degree: 'Yazılım Mühendisliği Lisans Programı',
   university: 'İnönü Üniversitesi',
-  period: 'Eylül 2023 – Devam Ediyor',
-  agno: '3.31',
+  level: '4. Sınıf Öğrencisi',
+  period: '2023 — Devam Ediyor',
 }
 
 const organizationalExperience = [
   {
     role: 'Sen Geleceksin Bursiyeri',
     organization: 'T3 Vakfı',
-    period: '2026 – Devam Ediyor',
-  },
-  {
-    role: 'Yönetim Kurulu Üyesi',
-    organization: 'İnönü Teknofest Topluluğu',
-    period: '2025 – Devam Ediyor',
-  },
-  {
-    role: 'Sosyal Sorumluluk Ekibi Başkanı',
-    organization: 'İnönü Teknofest Topluluğu',
-    period: '2025 – Devam Ediyor',
-  },
-  {
-    role: 'Yönetim Kurulu Üyesi',
-    organization: 'İnönü Genç TEMA',
-    period: '2024 – 2025',
+    period: '2026 — Devam Ediyor',
   },
   {
     role: 'Eğitim Desteği Bursiyeri',
     organization: 'T3 Vakfı',
     period: '2025',
   },
+  {
+    role: 'Sosyal Sorumluluk Ekibi Başkanı',
+    organization: 'İnönü Teknofest Topluluğu',
+    period: '2025 — Devam Ediyor',
+  },
+  {
+    role: 'Yönetim Kurulu Üyesi',
+    organization: 'İnönü Teknofest Topluluğu',
+    period: '2025 — Devam Ediyor',
+  },
+  {
+    role: 'Yönetim Kurulu Üyesi',
+    organization: 'İnönü Genç TEMA',
+    period: '2024 — 2025',
+  },
 ]
+
+function Card({ icon, title, children, className = '' }) {
+  return (
+    <div className={`rounded-lg border border-outline-variant bg-surface-container p-4 ${className}`}>
+      <div className="mb-2 flex items-center gap-2 text-primary">
+        <span className="material-symbols-outlined text-xl">{icon}</span>
+        <h3 className="font-display text-lg font-bold">{title}</h3>
+      </div>
+      {children}
+    </div>
+  )
+}
 
 export default function Hakkimda() {
   return (
-    <section
-      id="about"
-      className="mx-auto max-w-container-max px-margin-x pb-stack-lg pt-stack-lg"
-    >
-      <div className="flex flex-col items-start gap-stack-lg md:flex-row">
-        <div className="sticky top-32 w-full md:w-5/12 lg:w-4/12">
-          <div className="group relative">
-            <div className="absolute -inset-1 rounded-lg bg-gradient-to-b from-primary/20 to-transparent opacity-25 blur transition duration-1000 group-hover:opacity-40" />
+    <section id="about" className="relative mx-auto max-w-container-max px-margin-x py-stack-md">
+      <div className="grid items-center gap-stack-md lg:grid-cols-[minmax(280px,390px)_minmax(0,1fr)]">
+        <aside className="flex h-full items-center">
+          <div className="relative mx-auto w-full max-w-[390px]">
+            <div className="absolute -inset-1 rounded-lg bg-gradient-to-b from-primary/20 to-transparent opacity-25 blur" />
             <img
               src="/resimler/karakter.png"
               alt="Elif Kavurga karakter illüstrasyonu"
-              className="image-glow relative aspect-[0.67] w-full rounded-lg border border-outline-variant object-cover"
+              className="image-glow relative max-h-[560px] w-full rounded-lg border border-outline-variant object-cover object-top"
             />
           </div>
-        </div>
+        </aside>
 
-        <div className="flex w-full flex-col gap-stack-md md:w-7/12 lg:w-8/12">
-          <div className="mb-stack-sm border-b border-outline-variant pb-stack-sm">
-            <h2 className="mb-2 font-display text-display-lg text-primary">
-              Merhaba, Ben Bir Geliştiriciyim.
+        <div className="flex flex-col gap-3">
+          <div className="border-b border-outline-variant pb-3">
+            <p className="mb-1 font-label text-label-md uppercase tracking-widest text-outline">
+              Hakkımda
+            </p>
+            <h2 className="max-w-3xl font-display text-display-lg text-on-surface">
+              Gelişim yolculuğum
             </h2>
-            <p className="font-label text-label-md uppercase tracking-widest text-outline">
-              Full-Stack Mühendisi &amp; Yazılım Geliştirici
+          </div>
+
+          <div className="space-y-2.5 font-body text-body-md leading-relaxed text-on-surface-variant md:text-[16px]">
+            <p>
+              İnönü Üniversitesi Yazılım Mühendisliği 4. sınıf öğrencisiyim. Derslerde edindiğim
+              teorik bilgileri gerçek projelere dönüştürmeyi seviyor, her projede yeni şeyler
+              öğrenmeye çalışıyorum.
+            </p>
+            <p>
+              Teknik çalışmaların yanında ekip çalışmaları ve sosyal sorumluluk projelerinde de aktif
+              rol aldım. T3 Vakfı burs programlarında yer alıyor, İnönü Teknofest Topluluğunda
+              etkinliklerin planlanmasına katkı sağlıyorum.
+            </p>
+            <p className="font-label text-label-md italic text-primary">
+              Hedefim; teknik açıdan gelişirken birlikte çalışması keyifli bir yazılım geliştirici
+              olmak.
             </p>
           </div>
 
-          <div className="space-y-stack-md font-body text-body-lg leading-relaxed text-on-surface-variant">
-            <section className="max-w-2xl">
-              <p>
-                İnönü Üniversitesi Yazılım Mühendisliği bölümünde eğitimime devam ederken Java Spring
-                Boot, React ve Flutter teknolojileriyle uçtan uca dijital çözümler geliştiriyorum.
-                FootBase, DevLog ve Saye gibi projelerimde full-stack mimari, tasarım desenleri ve
-                modüler yazılım yapıları üzerine odaklanıyorum.
-              </p>
-              <p className="mt-stack-sm">
-                T3 Vakfı bursiyeri olarak teknoloji ve eğitim alanındaki sorumluluklarımı İnönü
-                Teknofest Topluluğu Yönetim Kurulu üyeliği ve Sosyal Sorumluluk Ekibi başkanlığı
-                görevleriyle birleştiriyor; topluluk odaklı projelerde liderlik ve organizasyon
-                deneyimi kazanıyorum.
-              </p>
-            </section>
-
-            <div className="grid grid-cols-1 gap-stack-sm lg:grid-cols-2">
-              <div className="rounded-lg border border-outline-variant bg-surface-container p-stack-sm">
-                <div className="mb-4 flex items-center gap-2 text-primary">
-                  <span className="material-symbols-outlined">school</span>
-                  <h3 className="font-display text-headline-lg-mobile font-bold">Eğitim</h3>
+          <div className="grid gap-3 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+            <div className="flex flex-col gap-3">
+              <Card icon="school" title="Eğitim">
+                <div className="flex flex-col gap-1 font-body text-body-md text-on-surface-variant">
+                  <span className="font-bold text-on-surface">{education.degree}</span>
+                  <span className="font-label text-label-md">{education.university}</span>
+                  <span className="font-label text-label-md">{education.level}</span>
+                  <span className="font-label text-label-md text-primary">{education.period}</span>
                 </div>
-                <ul className="space-y-4 font-body text-body-md text-on-surface-variant">
-                  <li className="flex flex-col">
-                    <span className="font-bold text-on-surface">{education.degree}</span>
-                    <span className="font-label text-label-md">{education.university}</span>
-                    <span className="mt-1 font-label text-label-md text-primary">{education.period}</span>
-                    <span className="mt-1 font-label text-label-md">AGNO: {education.agno}</span>
+              </Card>
+
+              <Card icon="terminal" title="Teknik Yaklaşım">
+                <p className="font-body text-body-md leading-relaxed text-on-surface-variant">
+                  Backend tarafında sağlam temeller kurarken, frontend tarafında kullanıcı deneyimini
+                  ön planda tutuyorum. Her projede öğrenmeye devam ediyorum.
+                </p>
+              </Card>
+
+              <Card icon="psychology" title="Yazılım Felsefesi">
+                <p className="font-body text-body-md leading-relaxed text-on-surface">
+                  &quot;Önce problemi anlamaya, sonra kod yazmaya inanıyorum.&quot;
+                </p>
+              </Card>
+            </div>
+
+            <Card icon="groups" title="Organizasyonel Deneyim">
+              <ul className="space-y-2.5 font-body text-body-md text-on-surface-variant">
+                {organizationalExperience.map((item) => (
+                  <li key={`${item.organization}-${item.role}-${item.period}`} className="flex flex-col">
+                    <span className="font-bold text-on-surface">{item.role}</span>
+                    <span className="font-label text-label-md">{item.organization}</span>
+                    <span className="font-label text-label-md text-primary">{item.period}</span>
                   </li>
-                </ul>
-              </div>
+                ))}
+              </ul>
+            </Card>
+          </div>
 
-              <div className="rounded-lg border border-outline-variant bg-surface-container p-stack-sm">
-                <div className="mb-4 flex items-center gap-2 text-primary">
-                  <span className="material-symbols-outlined">groups</span>
-                  <h3 className="font-display text-headline-lg-mobile font-bold">
-                    Organizasyonel Deneyim
-                  </h3>
-                </div>
-                <ul className="space-y-4 font-body text-body-md text-on-surface-variant">
-                  {organizationalExperience.map((item) => (
-                    <li key={`${item.organization}-${item.role}`} className="flex flex-col">
-                      <span className="font-bold text-on-surface">{item.role}</span>
-                      <span className="font-label text-label-md">{item.organization}</span>
-                      <span className="mt-1 font-label text-label-md text-primary">{item.period}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="rounded-lg border border-outline-variant bg-surface-container p-stack-sm">
-              <div className="mb-4 flex items-center gap-2 text-primary">
-                <span className="material-symbols-outlined">psychology</span>
-                <h3 className="font-display text-headline-lg-mobile font-bold">Yazılım Felsefesi</h3>
-              </div>
-              <p className="font-body text-body-md italic leading-relaxed opacity-90">
-                Temiz kod prensipleriyle sürdürülebilir mimariler ve yenilikçi eğitim platformları
-                inşa etmek.
-              </p>
-            </div>
-
-            <section className="max-w-2xl">
-              <h3 className="mb-stack-sm font-display text-headline-lg text-on-surface">
-                Teknik Odak
-              </h3>
-              <p>
-                Spring Boot ve RESTful API ile backend sistemleri; React ile web arayüzleri; Flutter
-                ile mobil uygulamalar geliştiriyorum. PostgreSQL, Git ve Docker gibi araçlarla
-                projelerimi uçtan uca yönetiyor; hackathon ve bootcamp deneyimlerimle sürekli
-                öğrenmeye devam ediyorum.
-              </p>
-            </section>
-
-            <div className="pt-stack-md">
-              <button
-                type="button"
-                onClick={scrollToContact}
-                className="inline-flex items-center gap-2 rounded bg-primary px-8 py-4 font-bold text-on-primary transition-all hover:brightness-110 active:scale-95"
-              >
-                Birlikte Çalışalım
-                <span className="material-symbols-outlined">arrow_forward</span>
-              </button>
-            </div>
+          <div>
+            <button
+              type="button"
+              onClick={scrollToContact}
+              className="inline-flex items-center justify-center gap-2 rounded bg-primary px-7 py-3.5 font-bold text-on-primary transition-all hover:brightness-110 active:scale-95"
+            >
+              Birlikte Çalışalım
+              <span className="material-symbols-outlined">arrow_forward</span>
+            </button>
           </div>
         </div>
       </div>

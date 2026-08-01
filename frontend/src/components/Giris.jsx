@@ -6,21 +6,26 @@ export default function Giris() {
   }
 
   return (
-    <section className="relative mx-auto flex min-h-[calc(100vh-80px)] max-w-container-max flex-col items-center gap-gutter px-margin-x py-stack-lg md:grid md:grid-cols-12">
+    <section className="relative mx-auto grid min-h-[calc(100vh-80px)] max-w-container-max items-center gap-stack-lg px-margin-x py-stack-lg md:grid-cols-12">
       <div className="flex flex-col gap-stack-md text-left md:col-span-7">
         <div className="flex items-center gap-2 font-label text-label-md text-primary">
           <span className="h-px w-8 bg-primary" />
-          <span>YENİ PROJELER İÇİN MÜSAİT</span>
+          <span>JAVA • REACT • FLUTTER</span>
         </div>
 
-        <h1 className="font-display text-display-lg tracking-tighter text-on-surface md:text-display-xl">
-          Merhaba, Ben Elif Kavurga.{' '}
-          <span className="text-primary">Full-Stack</span> Yazılım Geliştirici
-        </h1>
+        <div className="space-y-stack-sm">
+          <h1 className="max-w-4xl font-display text-display-lg tracking-tighter text-on-surface md:text-display-xl">
+            Merhaba, Ben Elif Kavurga.
+          </h1>
+          <p className="font-display text-headline-lg-mobile text-primary md:text-headline-lg">
+            Full-Stack Yazılım Geliştiricisi
+          </p>
+        </div>
 
-        <p className="max-w-xl font-body text-body-lg text-on-surface-variant">
-          Java Spring Boot, React ve Flutter teknolojileriyle uçtan uca, ölçeklenebilir dijital
-          çözümler üretiyorum.
+        <p className="max-w-2xl font-body text-body-lg text-on-surface-variant">
+          Yazılım geliştirmeyi yalnızca kod yazmak değil, gerçek problemlere çözüm üretmek olarak
+          görüyorum. Java Spring Boot, React ve Flutter ile web ve mobil uygulamalar geliştiriyor;
+          öğrendiklerimi her projede biraz daha ileri taşımaya çalışıyorum.
         </p>
 
         <div className="mt-stack-sm flex flex-wrap gap-stack-sm">
@@ -43,9 +48,9 @@ export default function Giris() {
         </div>
       </div>
 
-      <div className="relative mt-stack-lg flex w-full items-end justify-center md:col-span-5 md:mt-0">
-        <div className="absolute -z-10 bottom-0 h-[400px] w-[400px] rounded-full bg-primary/10 blur-[100px]" />
-        <div className="relative flex aspect-[2/3] w-full max-w-[450px] items-end">
+      <div className="relative mt-stack-md flex w-full items-end justify-center md:col-span-5 md:mt-0">
+        <div className="absolute -z-10 bottom-0 h-[420px] w-[420px] rounded-full bg-primary/10 blur-[100px]" />
+        <div className="relative flex aspect-[2/3] w-full max-w-[440px] items-end">
           <img
             src="/resimler/selamlayan.png"
             alt="Elif Kavurga selamlayan portre illüstrasyonu"
