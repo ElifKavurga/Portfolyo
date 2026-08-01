@@ -1,0 +1,8 @@
+spring:
+  mail:
+    username: kavurga77@gmail.com
+    password: BURAYA-GMAIL-SIFRESI
+
+app:
+  contact:
+    recipient: kavurga77@gmail.com

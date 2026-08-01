@@ -31,7 +31,6 @@ public class GitHubProjectService {
             new GitHubRepoDefinition("ElifKavurga", "DevLog", ProjectCategory.WEB),
             new GitHubRepoDefinition("ElifKavurga", "Saye", ProjectCategory.MOBILE),
             new GitHubRepoDefinition("ElifKavurga", "Mutfak-Asistanim", ProjectCategory.MOBILE),
-            new GitHubRepoDefinition("ElifKavurga", "Nova-Connect", ProjectCategory.WEB),
             new GitHubRepoDefinition("ElifKavurga", "Hogsmade-Cafe", ProjectCategory.WEB),
             new GitHubRepoDefinition("ElifKavurga", "FootBase", ProjectCategory.WEB),
             new GitHubRepoDefinition("ElifKavurga", "Yazilim-Muhendisliginde-Gelismeler-I", ProjectCategory.WEB, "DersYoldaşı"),

@@ -1,6 +1,8 @@
+import { scrollToContact } from '../utils/scrollToContact'
+
 export default function Giris() {
   const scrollToProjects = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('web-projects')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -31,12 +33,13 @@ export default function Giris() {
             <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
           </button>
 
-          <a
-            href="#contact"
+          <button
+            type="button"
+            onClick={scrollToContact}
             className="rounded-lg border border-outline-variant px-stack-lg py-4 font-label text-label-md text-on-surface transition-all hover:bg-surface-container-low active:scale-95"
           >
             Benimle İletişime Geç
-          </a>
+          </button>
         </div>
       </div>
 

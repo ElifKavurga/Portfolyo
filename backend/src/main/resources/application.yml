@@ -2,8 +2,21 @@ server:
   port: 8080
 
 spring:
+  config:
+    import: optional:file:./application-local.yml
   application:
     name: portfolio-backend
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:kavurga77@gmail.com}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   datasource:
     url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:portfolio}
     username: ${POSTGRES_USER:postgres}
@@ -24,6 +37,8 @@ cache:
   github-projects-ttl-hours: 1
 
 app:
+  contact:
+    recipient: ${CONTACT_RECIPIENT:kavurga77@gmail.com}
   cors:
     allowed-origins:
       - http://localhost:5173

@@ -8,7 +8,99 @@ import {
   webOrbPositions,
 } from '../data/webProjectDetails'
 
+function getProjectScreenshots(project) {
+  return project.screenshots?.length
+    ? project.screenshots
+    : project.imageUrl
+      ? [project.imageUrl]
+      : []
+}
+
+function ScreenshotSlider({ project }) {
+  const screenshots = getProjectScreenshots(project)
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    setActiveIndex(0)
+  }, [project.key])
+
+  if (screenshots.length === 0) {
+    return (
+      <div className="flex h-full items-center justify-center">
+        <span className="material-symbols-outlined text-6xl text-primary/30">{project.icon}</span>
+      </div>
+    )
+  }
+
+  const showControls = screenshots.length > 1
+  const goToPrevious = () => {
+    setActiveIndex((index) => (index === 0 ? screenshots.length - 1 : index - 1))
+  }
+  const goToNext = () => {
+    setActiveIndex((index) => (index === screenshots.length - 1 ? 0 : index + 1))
+  }
+
+  return (
+    <>
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={`${project.key}-${activeIndex}`}
+          src={screenshots[activeIndex]}
+          alt={`${project.title} ekran görüntüsü ${activeIndex + 1}`}
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -24 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+          className="h-full w-full object-contain"
+        />
+      </AnimatePresence>
+
+      {showControls && (
+        <>
+          <button
+            type="button"
+            onClick={goToPrevious}
+            aria-label="Önceki görsel"
+            className="absolute left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur transition hover:bg-black/75"
+          >
+            <span className="material-symbols-outlined text-xl">chevron_left</span>
+          </button>
+          <button
+            type="button"
+            onClick={goToNext}
+            aria-label="Sonraki görsel"
+            className="absolute right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur transition hover:bg-black/75"
+          >
+            <span className="material-symbols-outlined text-xl">chevron_right</span>
+          </button>
+
+          <div className="absolute bottom-3 left-1/2 z-10 flex max-w-[85%] -translate-x-1/2 gap-1.5 overflow-hidden">
+            {screenshots.map((screenshot, index) => (
+              <button
+                key={screenshot}
+                type="button"
+                onClick={() => setActiveIndex(index)}
+                aria-label={`${index + 1}. görsel`}
+                className={`h-1.5 shrink-0 rounded-full transition-all ${
+                  index === activeIndex ? 'w-5 bg-primary' : 'w-1.5 bg-white/50 hover:bg-white/80'
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </>
+  )
+}
+
 function MonitorScreen({ project }) {
+  const [view, setView] = useState('intro')
+  const screenshots = getProjectScreenshots(project)
+
+  useEffect(() => {
+    setView('intro')
+  }, [project.key])
+
   return (
     <motion.div
       key={project.key}
@@ -16,51 +108,97 @@ function MonitorScreen({ project }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.98 }}
       transition={{ duration: 0.4, ease: 'easeInOut' }}
-      className="absolute inset-0 flex flex-col bg-[#05080a]"
+      className="absolute inset-0 bg-[#05080a]"
     >
-      <div className="relative h-[45%] w-full shrink-0 overflow-hidden bg-[#0f172a]">
-        {project.imageUrl ? (
-          <img
-            src={project.imageUrl}
-            alt={project.title}
-            className="h-full w-full object-cover object-top"
-          />
+      <AnimatePresence mode="wait">
+        {view === 'gallery' ? (
+          <motion.div
+            key="gallery"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="absolute inset-0 flex flex-col bg-[#020617]"
+          >
+            <div className="flex items-center justify-between gap-3 border-b border-outline-variant/60 px-4 py-3">
+              <button
+                type="button"
+                onClick={() => setView('intro')}
+                className="inline-flex items-center gap-2 rounded border border-outline-variant bg-surface-container px-3 py-2 font-label text-xs text-on-surface transition hover:border-primary hover:text-primary"
+              >
+                <span className="material-symbols-outlined text-base">arrow_back</span>
+                Tanıtım
+              </button>
+              <span className="min-w-0 truncate font-label text-sm text-on-surface">{project.title}</span>
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded border border-outline-variant bg-surface-container px-3 py-2 font-label text-xs text-on-surface transition hover:border-primary hover:text-primary"
+              >
+                GitHub
+                <span className="material-symbols-outlined text-base">open_in_new</span>
+              </a>
+            </div>
+
+            <div className="relative min-h-0 flex-1 overflow-hidden bg-[#020617]">
+              <ScreenshotSlider project={project} />
+            </div>
+          </motion.div>
         ) : (
-          <div className="flex h-full items-center justify-center">
-            <span className="material-symbols-outlined text-6xl text-primary/30">{project.icon}</span>
-          </div>
+          <motion.div
+            key="intro"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="absolute inset-0 flex flex-col overflow-y-auto p-6 md:p-8"
+          >
+            <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-lg border border-outline-variant bg-primary/10">
+              <span className="material-symbols-outlined text-4xl text-primary">{project.icon}</span>
+            </div>
+
+            <h3 className="mb-2 font-display text-headline-lg text-on-surface">{project.title}</h3>
+            <p className="mb-5 text-base text-primary">{project.subtitle}</p>
+            <p className="mb-6 max-w-2xl text-sm leading-relaxed text-on-surface-variant md:text-base">
+              {project.description}
+            </p>
+
+            <div className="mb-8 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded border border-outline-variant bg-primary/10 px-2 py-1 font-label text-[10px] text-primary"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-auto flex flex-wrap gap-3">
+              {screenshots.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setView('gallery')}
+                  className="inline-flex items-center gap-2 rounded border border-primary bg-primary px-4 py-2 font-label text-label-md text-on-primary transition hover:brightness-110"
+                >
+                  Görseller
+                  <span className="material-symbols-outlined text-base">photo_library</span>
+                </button>
+              )}
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded border border-primary bg-primary/10 px-4 py-2 font-label text-label-md text-primary transition-all hover:bg-primary hover:text-on-primary"
+              >
+                GitHub&apos;da İncele
+                <span className="material-symbols-outlined text-base">open_in_new</span>
+              </a>
+            </div>
+          </motion.div>
         )}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/[0.02]" />
-      </div>
-
-      <div className="flex flex-1 flex-col overflow-y-auto p-5 md:p-6">
-        <h3 className="mb-1 font-display text-headline-lg-mobile text-on-surface">{project.title}</h3>
-        <p className="mb-3 text-sm text-primary">{project.subtitle}</p>
-        <p className="mb-4 flex-1 text-sm leading-relaxed text-on-surface-variant">
-          {project.description}
-        </p>
-
-        <div className="mb-4 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded border border-outline-variant bg-primary/10 px-2 py-1 font-label text-[10px] text-primary"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <a
-          href={project.githubUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 self-start rounded border border-primary bg-primary/10 px-4 py-2 font-label text-label-md text-primary transition-all hover:bg-primary hover:text-on-primary"
-        >
-          GitHub&apos;da İncele
-          <span className="material-symbols-outlined text-base">open_in_new</span>
-        </a>
-      </div>
+      </AnimatePresence>
     </motion.div>
   )
 }

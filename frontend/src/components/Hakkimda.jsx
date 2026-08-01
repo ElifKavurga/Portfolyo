@@ -1,3 +1,5 @@
+import { scrollToContact } from '../utils/scrollToContact'
+
 const education = {
   degree: 'Yazılım Mühendisliği Lisans Programı',
   university: 'İnönü Üniversitesi',
@@ -136,13 +138,14 @@ export default function Hakkimda() {
             </section>
 
             <div className="pt-stack-md">
-              <a
-                href="#contact"
+              <button
+                type="button"
+                onClick={scrollToContact}
                 className="inline-flex items-center gap-2 rounded bg-primary px-8 py-4 font-bold text-on-primary transition-all hover:brightness-110 active:scale-95"
               >
                 Birlikte Çalışalım
                 <span className="material-symbols-outlined">arrow_forward</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
