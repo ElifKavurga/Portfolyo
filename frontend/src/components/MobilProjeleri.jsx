@@ -7,6 +7,7 @@ import {
   mobileProjectDetails,
   orbPositions,
 } from '../data/mobileProjectDetails'
+import { publicAsset } from '../utils/assetPath'
 
 const IMAGE_CACHE_VERSION = '2026-08-01-1'
 
@@ -17,9 +18,12 @@ function getProjectScreenshots(project) {
       ? [project.imageUrl]
       : []
 
-  return screenshots.map((url) =>
-    url.includes('?') ? `${url}&v=${IMAGE_CACHE_VERSION}` : `${url}?v=${IMAGE_CACHE_VERSION}`,
-  )
+  return screenshots.map((url) => {
+    const assetUrl = publicAsset(url)
+    return assetUrl.includes('?')
+      ? `${assetUrl}&v=${IMAGE_CACHE_VERSION}`
+      : `${assetUrl}?v=${IMAGE_CACHE_VERSION}`
+  })
 }
 
 function ScreenshotSlider({ project }) {
@@ -351,7 +355,7 @@ export default function MobilProjeleri() {
 
       <div className="pointer-events-none absolute right-0 bottom-0 z-0 hidden w-48 lg:block lg:w-72">
         <img
-          src="/resimler/mobil.png"
+          src={publicAsset('resimler/mobil.png')}
           alt="Mobil projeler karakter illüstrasyonu"
           className="h-[520px] object-contain object-bottom opacity-90 drop-shadow-2xl lg:h-[600px]"
         />

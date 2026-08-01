@@ -1,3 +1,5 @@
+import { publicAsset } from '../utils/assetPath'
+
 function categoryLabel(category) {
   if (typeof category === 'string') {
     return category
@@ -12,7 +14,7 @@ export default function ProjectCard({ project }) {
       <div className="aspect-video bg-surface-container-high">
         {project.imageUrl ? (
           <img
-            src={project.imageUrl}
+            src={publicAsset(project.imageUrl)}
             alt={project.title}
             className="h-full w-full object-cover"
             loading="lazy"

@@ -7,6 +7,7 @@ import {
   mergeWebProjectData,
   webOrbPositions,
 } from '../data/webProjectDetails'
+import { publicAsset } from '../utils/assetPath'
 
 const IMAGE_CACHE_VERSION = '2026-08-01-1'
 
@@ -17,9 +18,12 @@ function getProjectScreenshots(project) {
       ? [project.imageUrl]
       : []
 
-  return screenshots.map((url) =>
-    url.includes('?') ? `${url}&v=${IMAGE_CACHE_VERSION}` : `${url}?v=${IMAGE_CACHE_VERSION}`,
-  )
+  return screenshots.map((url) => {
+    const assetUrl = publicAsset(url)
+    return assetUrl.includes('?')
+      ? `${assetUrl}&v=${IMAGE_CACHE_VERSION}`
+      : `${assetUrl}?v=${IMAGE_CACHE_VERSION}`
+  })
 }
 
 function ScreenshotSlider({ project }) {
@@ -349,7 +353,7 @@ export default function WebProjeleri() {
 
       <div className="pointer-events-none absolute right-0 bottom-0 z-0 hidden w-40 md:block md:w-56 lg:w-64">
         <img
-          src="/resimler/web.png"
+          src={publicAsset('resimler/web.png')}
           alt="Web projeler karakter illüstrasyonu"
           className="h-auto w-full drop-shadow-2xl"
         />

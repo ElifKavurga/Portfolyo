@@ -1,4 +1,5 @@
 import { scrollToContact } from '../utils/scrollToContact'
+import { publicAsset } from '../utils/assetPath'
 
 const education = {
   degree: 'Yazılım Mühendisliği Lisans Programı',
@@ -55,7 +56,7 @@ export default function Hakkimda() {
           <div className="relative mx-auto w-full max-w-[390px]">
             <div className="absolute -inset-1 rounded-lg bg-gradient-to-b from-primary/20 to-transparent opacity-25 blur" />
             <img
-              src="/resimler/karakter.png"
+              src={publicAsset('resimler/karakter.png')}
               alt="Elif Kavurga karakter illüstrasyonu"
               className="image-glow relative max-h-[560px] w-full rounded-lg border border-outline-variant object-cover object-top"
             />

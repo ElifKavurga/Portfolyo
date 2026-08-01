@@ -1,4 +1,5 @@
 import { scrollToContact } from '../utils/scrollToContact'
+import { publicAsset } from '../utils/assetPath'
 
 export default function Giris() {
   const scrollToProjects = () => {
@@ -52,7 +53,7 @@ export default function Giris() {
         <div className="absolute -z-10 bottom-0 h-[420px] w-[420px] rounded-full bg-primary/10 blur-[100px]" />
         <div className="relative flex aspect-[2/3] w-full max-w-[440px] items-end">
           <img
-            src="/resimler/selamlayan.png"
+            src={publicAsset('resimler/selamlayan.png')}
             alt="Elif Kavurga selamlayan portre illüstrasyonu"
             className="h-auto w-full object-contain drop-shadow-2xl"
           />

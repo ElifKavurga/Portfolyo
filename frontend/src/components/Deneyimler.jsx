@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { experienceTimeline } from '../data/experienceTimeline'
+import { publicAsset } from '../utils/assetPath'
 
 const badgeStyles = {
   primary: 'bg-primary/10 text-primary',
@@ -90,7 +91,7 @@ export default function Deneyimler() {
             className="relative mx-auto mt-8 max-w-xl lg:mt-44 lg:max-w-none"
           >
             <img
-              src="/resimler/deneyimler.png"
+              src={publicAsset('resimler/deneyimler.png')}
               alt="Deneyimler karakter illüstrasyonu"
               className="mx-auto h-auto max-h-[72vh] w-full scale-110 object-contain drop-shadow-[0_0_50px_rgba(173,198,255,0.2)]"
             />

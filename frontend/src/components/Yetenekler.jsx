@@ -1,5 +1,7 @@
 ﻿import { motion } from 'framer-motion'
 
+import { publicAsset } from '../utils/assetPath'
+
 const skillCategories = [
   {
     title: 'Programlama Dilleri',
@@ -109,7 +111,7 @@ export default function Yetenekler() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative z-10 flex aspect-square w-full max-w-md items-center justify-center">
               <img
-                src="/resimler/yetenekler.png"
+                src={publicAsset('resimler/yetenekler.png')}
                 alt="Yetenekler karakter illüstrasyonu"
                 className="relative z-10 h-full w-full object-contain drop-shadow-[0_0_50px_rgba(173,198,255,0.2)]"
               />
