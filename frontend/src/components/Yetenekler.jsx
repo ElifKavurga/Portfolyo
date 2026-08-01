@@ -12,12 +12,12 @@ const skillCategories = [
     skills: ['Spring Boot', 'React (temel)', 'RESTful API'],
   },
   {
-    title: 'VeritabanÄ±',
+    title: 'Veritabanı',
     icon: 'database',
     skills: ['PostgreSQL', 'MySQL'],
   },
   {
-    title: 'AraÃ§lar & Teknolojiler',
+    title: 'Araçlar & Teknolojiler',
     icon: 'build',
     skills: ['Git', 'GitHub', 'Docker', 'IntelliJ IDEA', 'VS Code', 'Android Studio', 'Figma'],
   },
@@ -110,7 +110,7 @@ export default function Yetenekler() {
             <div className="relative z-10 flex aspect-square w-full max-w-md items-center justify-center">
               <img
                 src="/resimler/yetenekler.png"
-                alt="Yetenekler karakter illÃ¼strasyonu"
+                alt="Yetenekler karakter illüstrasyonu"
                 className="relative z-10 h-full w-full object-contain drop-shadow-[0_0_50px_rgba(173,198,255,0.2)]"
               />
             </div>

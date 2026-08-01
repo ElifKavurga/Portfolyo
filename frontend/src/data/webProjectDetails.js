@@ -92,11 +92,11 @@ export const webProjectDetails = {
 }
 
 export const webOrbPositions = [
-  { className: 'absolute -left-2 md:-left-16 top-[8%]', delay: 0 },
-  { className: 'absolute -right-2 md:-right-20 top-[20%]', delay: 0.5 },
-  { className: 'absolute -left-6 md:-left-28 bottom-[18%]', delay: 1 },
-  { className: 'absolute -right-4 md:-right-24 bottom-[8%]', delay: 1.5 },
-  { className: 'absolute left-1/2 -translate-x-1/2 -top-10 md:-top-14', delay: 0.75 },
+  { className: 'absolute left-[2%] top-[15%] lg:-left-24', delay: 0 },
+  { className: 'absolute right-[2%] top-[15%] lg:-right-28', delay: 0.5 },
+  { className: 'absolute left-[2%] bottom-[19%] lg:-left-28', delay: 1 },
+  { className: 'absolute left-[28%] bottom-[6%] lg:left-[20%]', delay: 1.5 },
+  { className: 'absolute left-1/2 top-0 -translate-x-1/2 lg:-top-8', delay: 0.75 },
 ]
 
 export function getWebProjectKey(project) {

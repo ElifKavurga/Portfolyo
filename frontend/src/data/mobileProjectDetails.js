@@ -3,7 +3,7 @@ export const mobileProjectDetails = {
     title: 'SAYE',
     subtitle: 'Konum Tabanlı Çapraz Platform Güvenlik Uygulaması',
     description:
-      'Flutter (Mobil), Java Spring Boot (Backend) ve PostGIS (Mekansal Veritabanı) kullanarak geliştirdiğimiz; kullanıcıların anlık konumlarını harita üzerinden paylaşarak güvenliklerini sağlayan çapraz platform uygulamasıdır. Ekip Kaptanı olarak sistemin backend mimarisini, Session tabanlı filtreleme mekanizmalarını ve harita entegrasyonlarını yapılandırarak projenin İnüfest 2026\'da başarıyla sergilenmesini sağladım.',
+      'Flutter (Mobil), Java Spring Boot (Backend) ve PostGIS (Mekansal Veritabanı) kullanarak geliştirdiğimiz; kullanıcıların anlık konumlarını harita üzerinden paylaşarak güvenliklerini sağlayan çapraz platform uygulamasıdır. Ekip kaptanı olarak sistemin backend mimarisini, session tabanlı filtreleme mekanizmalarını ve harita entegrasyonlarını yapılandırarak projenin İnüfest 2026’da sergilenmesine katkı sağladım.',
     tags: ['Flutter', 'Spring Boot', 'PostGIS'],
     icon: 'location_on',
     screenshots: [
@@ -44,7 +44,7 @@ export const mobileProjectDetails = {
     ],
   },
   bildunya: {
-    title: 'BilDunya',
+    title: 'BilDünya',
     subtitle: 'Ortak Mobil Eğitim Platformu',
     description:
       'MehmetAkifGuness ile ortak geliştirilen mobil eğitim uygulaması. Öğrenme içeriklerinin mobil cihazlarda erişilebilir, etkileşimli ve ölçeklenebilir biçimde sunulmasını amaçlayan çapraz platform bir çözümdür.',
@@ -66,9 +66,9 @@ export const mobileProjectDetails = {
 }
 
 export const orbPositions = [
-  { className: 'absolute -top-12 -ml-[200px]', size: 'h-24 w-24', delay: 0 },
-  { className: 'absolute top-24 ml-[280px] md:ml-[350px]', size: 'h-20 w-20', delay: 0.5 },
-  { className: 'absolute bottom-12 -ml-[280px] md:-ml-[350px]', size: 'h-20 w-20', delay: 1 },
+  { className: 'absolute left-[8%] top-[18%] md:left-[14%]', size: 'h-24 w-24', delay: 0 },
+  { className: 'absolute right-[8%] top-[18%] md:right-[14%]', size: 'h-20 w-20', delay: 0.5 },
+  { className: 'absolute left-[8%] bottom-[16%] md:left-[14%]', size: 'h-20 w-20', delay: 1 },
 ]
 
 export function getProjectKey(project) {
@@ -76,7 +76,7 @@ export function getProjectKey(project) {
 
   if (source.includes('saye')) return 'saye'
   if (source.includes('mutfak')) return 'mutfak-asistanim'
-  if (source.includes('bildunya')) return 'bildunya'
+  if (source.includes('bildunya') || source.includes('bildünya')) return 'bildunya'
 
   return source.replace(/\s+/g, '-')
 }
