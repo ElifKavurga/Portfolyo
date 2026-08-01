@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { fetchProjects } from '../api/projects'
 import {
@@ -52,7 +52,7 @@ function ScreenshotSlider({ project }) {
         <motion.img
           key={`${project.key}-${activeIndex}`}
           src={screenshots[activeIndex]}
-          alt={`${project.title} ekran görüntüsü ${activeIndex + 1}`}
+          alt={`${project.title} ekran gÃ¶rÃ¼ntÃ¼sÃ¼ ${activeIndex + 1}`}
           initial={{ opacity: 0, x: 18 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -18 }}
@@ -66,7 +66,7 @@ function ScreenshotSlider({ project }) {
           <button
             type="button"
             onClick={goToPrevious}
-            aria-label="Önceki görsel"
+            aria-label="Ã–nceki gÃ¶rsel"
             className="absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur transition hover:bg-black/75"
           >
             <span className="material-symbols-outlined text-lg">chevron_left</span>
@@ -74,7 +74,7 @@ function ScreenshotSlider({ project }) {
           <button
             type="button"
             onClick={goToNext}
-            aria-label="Sonraki görsel"
+            aria-label="Sonraki gÃ¶rsel"
             className="absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur transition hover:bg-black/75"
           >
             <span className="material-symbols-outlined text-lg">chevron_right</span>
@@ -86,7 +86,7 @@ function ScreenshotSlider({ project }) {
                 key={screenshot}
                 type="button"
                 onClick={() => setActiveIndex(index)}
-                aria-label={`${index + 1}. görsel`}
+                aria-label={`${index + 1}. gÃ¶rsel`}
                 className={`h-1.5 shrink-0 rounded-full transition-all ${
                   index === activeIndex ? 'w-4 bg-primary' : 'w-1.5 bg-white/50 hover:bg-white/80'
                 }`}
@@ -131,7 +131,7 @@ function PhoneScreen({ project }) {
                 type="button"
                 onClick={() => setView('intro')}
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-outline-variant bg-surface-container text-on-surface transition hover:border-primary hover:text-primary"
-                aria-label="Tanıtıma dön"
+                aria-label="TanÄ±tÄ±ma dÃ¶n"
               >
                 <span className="material-symbols-outlined text-lg">arrow_back</span>
               </button>
@@ -186,7 +186,7 @@ function PhoneScreen({ project }) {
                   onClick={() => setView('gallery')}
                   className="inline-flex w-full items-center justify-center gap-2 rounded border border-primary-container bg-primary-container py-3 font-label text-label-md text-on-primary-container transition-all hover:brightness-110"
                 >
-                  Görseller
+                  GÃ¶rseller
                   <span className="material-symbols-outlined text-base">photo_library</span>
                 </button>
               )}
@@ -196,7 +196,7 @@ function PhoneScreen({ project }) {
                 rel="noreferrer"
                 className="inline-flex w-full items-center justify-center gap-2 rounded border border-primary bg-primary/10 py-3 font-label text-label-md text-primary transition-all hover:bg-primary hover:text-on-primary"
               >
-                GitHub&apos;da İncele
+                GitHub&apos;da Ä°ncele
                 <span className="material-symbols-outlined text-base">open_in_new</span>
               </a>
             </div>
@@ -305,18 +305,15 @@ export default function MobilProjeleri() {
       <div className="relative mx-auto max-w-container-max px-margin-x">
         <div className="mb-stack-md text-center">
           <h2 className="mb-2 font-display text-display-lg text-on-surface">Mobil Projeler</h2>
-          <p className="font-body text-body-md text-on-surface-variant">
-            /api/projects üzerinden Mobil kategorisindeki projeler
-          </p>
         </div>
 
         {loading && (
-          <p className="text-center text-on-surface-variant">Mobil projeler yükleniyor...</p>
+          <p className="text-center text-on-surface-variant">Mobil projeler yÃ¼kleniyor...</p>
         )}
 
         {error && (
           <p className="mb-4 text-center text-sm text-primary">
-            API bağlantısı kurulamadı, PDF verileri gösteriliyor.
+            API baÄŸlantÄ±sÄ± kurulamadÄ±, PDF verileri gÃ¶steriliyor.
           </p>
         )}
 
@@ -355,7 +352,7 @@ export default function MobilProjeleri() {
       <div className="pointer-events-none absolute right-0 bottom-0 z-0 hidden w-48 lg:block lg:w-72">
         <img
           src="/resimler/mobil.png"
-          alt="Mobil projeler karakter illüstrasyonu"
+          alt="Mobil projeler karakter illÃ¼strasyonu"
           className="h-[520px] object-contain object-bottom opacity-90 drop-shadow-2xl lg:h-[600px]"
         />
       </div>

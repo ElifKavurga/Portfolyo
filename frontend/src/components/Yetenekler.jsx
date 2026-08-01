@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 
 const skillCategories = [
   {
@@ -12,12 +12,12 @@ const skillCategories = [
     skills: ['Spring Boot', 'React (temel)', 'RESTful API'],
   },
   {
-    title: 'Veritabanı',
+    title: 'VeritabanÄ±',
     icon: 'database',
     skills: ['PostgreSQL', 'MySQL'],
   },
   {
-    title: 'Araçlar & Teknolojiler',
+    title: 'AraÃ§lar & Teknolojiler',
     icon: 'build',
     skills: ['Git', 'GitHub', 'Docker', 'IntelliJ IDEA', 'VS Code', 'Android Studio', 'Figma'],
   },
@@ -90,9 +90,6 @@ export default function Yetenekler() {
           <h2 className="mb-2 bg-gradient-to-r from-on-surface to-primary bg-clip-text font-display text-display-lg text-transparent">
             Teknik Yetkinlikler
           </h2>
-          <p className="font-body text-body-md text-on-surface-variant">
-            PDF özgeçmişimden derlenen dil, framework, veritabanı ve araç setim.
-          </p>
         </div>
 
         <div className="relative mx-auto hidden min-h-[760px] max-w-4xl md:block">
@@ -113,7 +110,7 @@ export default function Yetenekler() {
             <div className="relative z-10 flex aspect-square w-full max-w-md items-center justify-center">
               <img
                 src="/resimler/yetenekler.png"
-                alt="Yetenekler karakter illüstrasyonu"
+                alt="Yetenekler karakter illÃ¼strasyonu"
                 className="relative z-10 h-full w-full object-contain drop-shadow-[0_0_50px_rgba(173,198,255,0.2)]"
               />
             </div>
