@@ -8,12 +8,18 @@ import {
   orbPositions,
 } from '../data/mobileProjectDetails'
 
+const IMAGE_CACHE_VERSION = '2026-08-01-1'
+
 function getProjectScreenshots(project) {
-  return project.screenshots?.length
+  const screenshots = project.screenshots?.length
     ? project.screenshots
     : project.imageUrl
       ? [project.imageUrl]
       : []
+
+  return screenshots.map((url) =>
+    url.includes('?') ? `${url}&v=${IMAGE_CACHE_VERSION}` : `${url}?v=${IMAGE_CACHE_VERSION}`,
+  )
 }
 
 function ScreenshotSlider({ project }) {
