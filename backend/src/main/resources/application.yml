@@ -6,17 +6,6 @@ spring:
     import: optional:file:./application-local.yml
   application:
     name: portfolio-backend
-  mail:
-    host: ${MAIL_HOST:smtp.gmail.com}
-    port: ${MAIL_PORT:587}
-    username: ${MAIL_USERNAME:kavurga77@gmail.com}
-    password: ${MAIL_PASSWORD:}
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
   datasource:
     url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:portfolio}
     username: ${POSTGRES_USER:postgres}
@@ -38,10 +27,14 @@ cache:
 
 app:
   contact:
-    recipient: ${CONTACT_RECIPIENT:kavurga77@gmail.com}
+    recipient: ${CONTACT_RECIPIENT:elifkvrg@gmail.com}
   cors:
     allowed-origins:
       - http://localhost:5173
+
+resend:
+  api-key: ${RESEND_API_KEY:}
+  from: "${RESEND_FROM:Portfolio <onboarding@resend.dev>}"
 
 logging:
   level:

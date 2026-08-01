@@ -24,6 +24,6 @@ public class ContactController {
     @PostMapping("/contact")
     public ResponseEntity<Map<String, String>> sendContactMessage(@Valid @RequestBody ContactRequest request) {
         mailService.sendContactEmail(request);
-        return ResponseEntity.ok(Map.of("message", "Mesajınız iletildi"));
+        return ResponseEntity.ok(Map.of("message", "Mesajınız başarıyla gönderildi."));
     }
 }

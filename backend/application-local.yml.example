@@ -1,8 +1,7 @@
-spring:
-  mail:
-    username: kavurga77@gmail.com
-    password: BURAYA-GMAIL-SIFRESI
+resend:
+  api-key: BURAYA-RESEND-API-KEY
+  from: "Portfolio <onboarding@resend.dev>"
 
 app:
   contact:
-    recipient: kavurga77@gmail.com
+    recipient: elifkvrg@gmail.com

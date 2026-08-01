@@ -8,8 +8,7 @@ export async function sendContactMessage({ name, email, message }) {
   })
 
   if (!response.ok) {
-    const errorBody = await response.json().catch(() => ({}))
-    throw new Error(errorBody.message || `Mesaj gönderilemedi (${response.status})`)
+    throw new Error('Mesaj gönderilemedi. Lütfen tekrar deneyin.')
   }
 
   return response.json()

@@ -1,52 +1,58 @@
 package com.portfolio.service;
 
 import com.portfolio.dto.ContactRequest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestClientResponseException;
+
+import java.util.Map;
 
 @Service
 public class MailService {
 
-    private static final Logger log = LoggerFactory.getLogger(MailService.class);
-
-    private final JavaMailSender mailSender;
+    private final RestClient resendClient;
+    private final String apiKey;
+    private final String fromEmail;
     private final String recipientEmail;
-    private final String senderEmail;
-    private final String mailPassword;
 
     public MailService(
-            JavaMailSender mailSender,
-            @Value("${app.contact.recipient:kavurga77@gmail.com}") String recipientEmail,
-            @Value("${spring.mail.username:}") String senderEmail,
-            @Value("${spring.mail.password:}") String mailPassword
+            @Value("${resend.api-key:}") String apiKey,
+            @Value("${resend.from:Portfolio <onboarding@resend.dev>}") String fromEmail,
+            @Value("${app.contact.recipient:elifkvrg@gmail.com}") String recipientEmail
     ) {
-        this.mailSender = mailSender;
+        this.apiKey = apiKey;
+        this.fromEmail = fromEmail;
         this.recipientEmail = recipientEmail;
-        this.senderEmail = senderEmail;
-        this.mailPassword = mailPassword;
-
-        if (mailPassword == null || mailPassword.isBlank()) {
-            log.warn("MAIL_PASSWORD ayarlanmadi. Iletisim formu e-posta gonderemez.");
-        }
+        this.resendClient = RestClient.builder()
+                .baseUrl("https://api.resend.com")
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .build();
     }
 
     public void sendContactEmail(ContactRequest request) {
-        if (mailPassword == null || mailPassword.isBlank()) {
-            throw new IllegalStateException(
-                    "E-posta sunucusu yapilandirilmamis. Gmail uygulama sifresini MAIL_PASSWORD olarak ayarlayin."
-            );
+        if (apiKey == null || apiKey.isBlank()) {
+            throw new IllegalStateException("Resend API anahtarı yapılandırılmamış.");
         }
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(recipientEmail);
-        message.setFrom(senderEmail.isBlank() ? recipientEmail : senderEmail);
-        message.setReplyTo(request.email());
-        message.setSubject("Portfolyo İletişim Formu: " + request.name());
-        message.setText(buildBody(request));
-        mailSender.send(message);
+
+        try {
+            resendClient.post()
+                    .uri("/emails")
+                    .header(HttpHeaders.AUTHORIZATION, "Bearer " + apiKey)
+                    .body(Map.of(
+                            "from", fromEmail,
+                            "to", recipientEmail,
+                            "reply_to", request.email(),
+                            "subject", "Portfolyo İletişim Formu: " + request.name(),
+                            "text", buildBody(request)
+                    ))
+                    .retrieve()
+                    .toBodilessEntity();
+        } catch (RestClientResponseException exception) {
+            throw new IllegalStateException("Mesaj gönderilemedi. Lütfen tekrar deneyin.", exception);
+        }
     }
 
     private String buildBody(ContactRequest request) {
