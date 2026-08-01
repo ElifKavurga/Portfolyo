@@ -13,7 +13,16 @@ export default function App() {
 
       <nav className="fixed top-0 z-50 w-full border-b border-outline-variant bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex h-20 max-w-container-max items-center justify-between px-margin-x">
-          <div className="text-xl font-bold tracking-tighter">DevPortfolio</div>
+          <a href="#" className="flex flex-col leading-none">
+            <span className="font-display text-xl font-bold tracking-tight text-on-surface">
+              Elif Kavurga
+            </span>
+            <span className="mt-1 h-px w-full bg-primary/70" />
+            <span className="mt-1 font-label text-[10px] uppercase tracking-widest text-primary">
+              Full-Stack Developer
+            </span>
+          </a>
+
           <div className="hidden items-center gap-stack-md font-label text-label-md md:flex">
             <a href="#web-projects" className="text-on-surface-variant transition-colors hover:text-on-surface">
               Projeler
