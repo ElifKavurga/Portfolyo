@@ -1,5 +1,16 @@
 export const experienceTimeline = [
   {
+    id: 'mars-internship-2026',
+    date: 'Temmuz 2026 — Ağustos 2026',
+    title: 'Full Stack Yazılım Geliştirici Stajyeri',
+    organization: 'İnönü Üniversitesi Dijital Dönüşüm Ofisi',
+    badge: 'Staj',
+    badgeTone: 'primary',
+    description:
+      'Yaz stajım boyunca Spring Boot ve React ile geliştirilen MARS projesinde görev aldım. REST API geliştirme, arayüz iyileştirmeleri, PostgreSQL ve Docker tabanlı geliştirme ortamı üzerinde çalıştım.',
+    iconTone: 'primary',
+  },
+  {
     id: 'inufest-2026',
     date: 'Haziran 2026',
     title: 'İnüfest Teknoloji Festivali',
@@ -7,7 +18,7 @@ export const experienceTimeline = [
     badge: 'Ekip Kaptanlığı',
     badgeTone: 'primary',
     description:
-      'Saye, Mutfak Asistanım ve BilDunya projeleriyle festivalde ekip kaptanı olarak yer aldım. Backend mimarisi, oturum tabanlı filtreleme ve harita entegrasyonlarını koordine ederek projelerin İnüfest 2026\'da başarıyla sergilenmesini sağladım.',
+      'Saye, Mutfak Asistanım ve BilDünya projeleriyle festivalde ekip kaptanı olarak yer aldım. Backend mimarisi, oturum tabanlı filtreleme ve harita entegrasyonlarını koordine ettim.',
     iconTone: 'primary',
   },
   {
@@ -18,29 +29,29 @@ export const experienceTimeline = [
     badge: '2. Lik',
     badgeTone: 'primary',
     description:
-      'TUA Astro Hackathon – Malatya 2.liği (48 Saat). Yoğun sprint sürecinde takım çalışması, problem çözme ve teknik sunum becerilerimi geliştirerek astroloji/teknoloji kesişiminde yenilikçi bir çözüm geliştirdik.',
+      '48 saatlik hackathon sürecinde takım çalışması, hızlı problem çözme ve teknik sunum deneyimi kazandım. Ekibimizle teknoloji odaklı bir çözüm geliştirerek Malatya ikincisi olduk.',
     iconTone: 'tertiary',
   },
   {
     id: 't3-sen-geleceksin',
-    date: '2026 – Günümüz',
+    date: '2026 — Günümüz',
     title: 'Sen Geleceksin Bursiyeri',
     organization: 'T3 Vakfı',
     badge: 'Burs',
     badgeTone: 'primary',
     description:
-      'T3 Vakfı Sen Geleceksin programı kapsamında bursiyer olarak teknoloji ve eğitim alanındaki hedeflerime yönelik projeler geliştirmeye ve topluluk odaklı çalışmalara devam ediyorum.',
+      'T3 Vakfı Sen Geleceksin programı kapsamında teknoloji ve eğitim alanındaki hedeflerime yönelik çalışmalarımı sürdürüyorum.',
     iconTone: 'primary',
   },
   {
     id: 'teknofest-topluluk',
-    date: '2025 – Günümüz',
+    date: '2025 — Günümüz',
     title: 'İnönü Teknofest Topluluğu',
     organization: 'Yönetim & Sosyal Sorumluluk',
     badge: 'Liderlik',
     badgeTone: 'tertiary',
     description:
-      'İnönü Teknofest Topluluğu Yönetim Kurulu Üyesi ve Sosyal Sorumluluk Ekibi Başkanı olarak topluluk etkinliklerini planlıyor, teknik ve sosyal projelerin koordinasyonunu yürütüyorum.',
+      'Yönetim Kurulu Üyesi ve Sosyal Sorumluluk Ekibi Başkanı olarak topluluk etkinliklerinin planlanmasına ve koordinasyonuna katkı sağlıyorum.',
     iconTone: 'tertiary',
   },
   {
@@ -51,18 +62,18 @@ export const experienceTimeline = [
     badge: 'Eğitim',
     badgeTone: 'outline',
     description:
-      'İnönü Üniversitesi Yazılım Mühendisliği bölümünde lisans eğitimime başladım. AGNO: 3.31 ile Java, Spring Boot, React ve Flutter ekosistemlerinde full-stack geliştirme odaklı projeler üretiyorum.',
+      'Yazılım mühendisliği eğitimim boyunca derslerde edindiğim bilgileri web ve mobil projelerle pratiğe dönüştürüyorum.',
     iconTone: 'primary',
   },
   {
     id: 'tubitak-2018',
     date: 'Haziran 2018',
     title: 'Yazılıma İlk Adım',
-    organization: 'TÜBİTAK 4006 – "Sayıları Öğreniyorum"',
+    organization: 'TÜBİTAK 4006 — “Sayıları Öğreniyorum”',
     badge: 'İlk Adım',
     badgeTone: 'outline',
     description:
-      'TÜBİTAK 4006 Bilim Fuarı kapsamında "Sayıları Öğreniyorum" projesiyle bilim ve teknolojiyle tanıştım. Bu deneyim, yazılım mühendisliği yolculuğumun ilk kıvılcımını oluşturdu.',
+      'TÜBİTAK 4006 Bilim Fuarı kapsamında geliştirdiğim proje, yazılım ve teknolojiye ilgimin ilk somut adımlarından biri oldu.',
     iconTone: 'muted',
     faded: true,
   },
