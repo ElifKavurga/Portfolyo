@@ -259,7 +259,6 @@ function ProjectPill({ project, position, isActive, onSelect }) {
 export default function WebProjeleri() {
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
   const [activeKey, setActiveKey] = useState('jakartamora')
 
   useEffect(() => {
@@ -280,11 +279,9 @@ export default function WebProjeleri() {
           setActiveKey(fallback[0].key)
         }
 
-        setError(null)
       })
-      .catch((err) => {
+      .catch(() => {
         if (!cancelled) {
-          setError(err.message)
           const fallback = getWebFallbackProjects()
           setProjects(fallback)
           setActiveKey('jakartamora')
@@ -314,12 +311,6 @@ export default function WebProjeleri() {
 
         {loading && (
           <p className="text-center text-on-surface-variant">Web projeleri yükleniyor...</p>
-        )}
-
-        {error && (
-          <p className="mb-4 text-center text-sm text-primary">
-            API bağlantısı kurulamadı, yerel proje verileri gösteriliyor.
-          </p>
         )}
 
         {!loading && activeProject && (

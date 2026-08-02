@@ -250,7 +250,6 @@ function ProjectOrb({ project, position, isActive, onSelect }) {
 export default function MobilProjeleri() {
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
   const [activeKey, setActiveKey] = useState('saye')
 
   useEffect(() => {
@@ -276,11 +275,9 @@ export default function MobilProjeleri() {
           setActiveKey(fallback[0].key)
         }
 
-        setError(null)
       })
-      .catch((err) => {
+      .catch(() => {
         if (!cancelled) {
-          setError(err.message)
           const fallback = Object.entries(mobileProjectDetails).map(([key, detail]) => ({
             key,
             ...detail,
@@ -313,12 +310,6 @@ export default function MobilProjeleri() {
 
         {loading && (
           <p className="text-center text-on-surface-variant">Mobil projeler yükleniyor...</p>
-        )}
-
-        {error && (
-          <p className="mb-4 text-center text-sm text-primary">
-            API bağlantısı kurulamadı, yerel proje verileri gösteriliyor.
-          </p>
         )}
 
         {!loading && activeProject && (
