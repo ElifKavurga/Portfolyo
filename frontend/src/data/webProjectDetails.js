@@ -30,12 +30,20 @@ export const webProjectDetails = {
     tags: ['Jakarta EE', 'JSF', 'JPA', 'PostgreSQL', 'Bootstrap'],
     icon: 'menu_book',
     screenshots: [
-      'https://raw.githubusercontent.com/ElifKavurga/FootBase/main/ekran_goruntuleri/Ana_Ekran.png',
-      'https://raw.githubusercontent.com/ElifKavurga/FootBase/main/ekran_goruntuleri/Ana_Ekran_Alt_Taraf.png',
-      'https://raw.githubusercontent.com/ElifKavurga/FootBase/main/ekran_goruntuleri/Giris_Yap.png',
-      'https://raw.githubusercontent.com/ElifKavurga/FootBase/main/ekran_goruntuleri/Kayit_Ol.png',
-      'https://raw.githubusercontent.com/ElifKavurga/FootBase/main/ekran_goruntuleri/Admin_Paneli.png',
-      'https://raw.githubusercontent.com/ElifKavurga/FootBase/main/ekran_goruntuleri/Editor_Paneli.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/bildirimler.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/blog_detay_1.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/blog_detay_2.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/giris_yap.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/hakk%C4%B1nda.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/kategoriler.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/kategorileri_yonet.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/kayit_ol.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/ke%C5%9Ffet.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/onay_bekleyenler.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/onay_islemlerim.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/profil.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/yazarlik_talepleri.png',
+      'https://raw.githubusercontent.com/ElifKavurga/DevLog/main/ekran_goruntuleri/yeni_blog_ekle.png',
     ],
   },
   'hogsmade-cafe': {
@@ -99,6 +107,14 @@ export const webOrbPositions = [
   { className: 'absolute left-1/2 top-0 -translate-x-1/2 lg:-top-8', delay: 0.75 },
 ]
 
+export const webProjectOrder = [
+  'jakartamora',
+  'footbase',
+  'hogsmade-cafe',
+  'dersyoldasi',
+  'devlog',
+]
+
 export function getWebProjectKey(project) {
   const source = `${project.githubUrl} ${project.title}`.toLowerCase()
 
@@ -132,11 +148,26 @@ export function mergeWebProjectData(apiProject) {
   }
 }
 
+export function sortWebProjects(projects) {
+  return [...projects].sort((firstProject, secondProject) => {
+    const firstIndex = webProjectOrder.indexOf(firstProject.key)
+    const secondIndex = webProjectOrder.indexOf(secondProject.key)
+
+    if (firstIndex === -1 && secondIndex === -1) return 0
+    if (firstIndex === -1) return 1
+    if (secondIndex === -1) return -1
+
+    return firstIndex - secondIndex
+  })
+}
+
 export function getWebFallbackProjects() {
-  return Object.entries(webProjectDetails).map(([key, detail]) => ({
-    key,
-    ...detail,
-    githubUrl: '#',
-    imageUrl: null,
-  }))
+  return sortWebProjects(
+    Object.entries(webProjectDetails).map(([key, detail]) => ({
+      key,
+      ...detail,
+      githubUrl: '#',
+      imageUrl: null,
+    })),
+  )
 }

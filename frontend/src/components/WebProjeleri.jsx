@@ -5,6 +5,7 @@ import {
   getWebFallbackProjects,
   isWebProject,
   mergeWebProjectData,
+  sortWebProjects,
   webOrbPositions,
 } from '../data/webProjectDetails'
 import { publicAsset } from '../utils/assetPath'
@@ -268,7 +269,7 @@ export default function WebProjeleri() {
       .then((data) => {
         if (cancelled) return
 
-        const webProjects = data.filter(isWebProject).map(mergeWebProjectData)
+        const webProjects = sortWebProjects(data.filter(isWebProject).map(mergeWebProjectData))
 
         if (webProjects.length > 0) {
           setProjects(webProjects)
